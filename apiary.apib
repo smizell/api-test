@@ -1,0 +1,108 @@
+FORMAT: 1A
+HOST: https://api.trello.com
+
+# Trello API
+
+## Group Board
+
+### Board [/1/boards/{board_id}]
+
++ Parameters
+    + board_id: 4eea4ffc91e31d1746000046 (string, required)
+
++ Attributes
+    + id - ID of the Trello board
+    + name: Trello Test Board - Name of Trello board
+    + desc - Description of Trello board
+    + closed: false (boolean) - Close status of board
+    + pinned: false (boolean) - Pinned status of board for user
+    + url: https://trello.com/b/9DfAWHRO/trello-test-board - Long URL of board
+    + shortUrl: https://trello.com/b/9DfAWHRO - Short URL of board
+    + prefs (object)
+        + permissionLevel: public - Permission level of board
+        + voting: disabled - Voting turned on
+        + comments: members - What users can comment
+        + invitations: members - Who can send invitations
+        + selfJoin: false (boolean) - Can users self join
+        + cardCovers: true (boolean) - Are card covers available to be used
+        + cardAging: regular - How are cards aged
+        + calendarFeedEnabled: false (boolean) - Is calendar feed enabled
+        + background: blue - Background color
+        + backgroundColor: #0079BF - Background color hex
+        + backgroundTile: false (boolean) - Is there a background tile
+        + backgroundBrightness: unknown - Background brightness
+        + canBePublic: true (boolean) - Can board be public
+        + canBeOrg: true (boolean) - Can board be org
+        + canBePrivate: true (boolean) - Can board be private
+        + canInvite: true (boolean) - Can members be invited
+    + labelNames (object)
+        + green
+        + yellow
+        + orange
+        + red
+        + purple
+        + blue
+        + sky
+        + lime
+        + pink
+        + black
+
+#### Retrieve [GET]
+
++ Response 200 (application/json; charset=utf-8)
+
+    + Attributes (Board)
+
+## Group Check List
+
+### Check List [/1/checklists/{idChecklist}{?cards,card_fields,checkItems,checkItem_fields,fields}]
+
++ Parameters
+    + idChecklist: 4eea6ae1a5da7f5a49000092 - ID of check list
+    + cards (enum, optional) - Filter by card type
+        + all
+        + closed
+        + none
+        + open
+        + visible
+    + card_fields (optional)
+        + Default: all
+    + checkItems: all, none (enum, optional)
+        + Default: all
+    + checkItem_fields (optional)
+        + Default: name,nameData,pos,state
+    + fields (optional)
+        + Default: all
+
+### Retrieve [GET]
+
++ Attributes
+    + id: 4eea6ae1a5da7f5a49000092
+    + name: API Checklist
+    + checkItems (array)
+        + (object)
+            + state: complete
+            + id: 4eea6aeda5da7f5a490000b9
+            + name: See if there is a call
+            + nameData
+            + pos: 16751 (number)
+
++ Response 200 (application/json; charset=utf-8)
+
+### Update [PUT]
+
+- Request (application/json)
+
++ Attributes
+    + name - a string with a length from 1 to 16384
+    + idCard - The id of the card that the checklist is on
+    + pos (enum)
+        + top
+        + bottom
+        + (number)
+
++ Response 200 (application/json; charset=utf-8)
+
+### Delete [DELETE]
+
++ Response 204

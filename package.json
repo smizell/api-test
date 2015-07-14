@@ -1,0 +1,12 @@
+{
+  "name": "trello-api",
+  "version": "0.0.1",
+  "description": "Testing for Trello API",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1"
+  },
+  "private": true
+}
